@@ -17,7 +17,7 @@
 `npx sequelize-cli db:create`
 #### Для создания таблиц
 `npx sequelize-cli db:migrate`
-#### Для внесения данных в БД
+#### Для внесения данных в таблицу
 `npx sequelize-cli db:seed:all`
 #### Запустить приложение
 `npm start`
