@@ -12,11 +12,12 @@ const Filters = () => {
 
     const onChangeNameColumn = (e) => {
         if (e.target.value !== 'name' && byСondition === 'contain') {
-            dispatch(changeNameColumn('name'));
             alert("Фильтр 'Содержит' может быть только с фильтром 'Название'");
         } else if (e.target.value === 'name' && (byСondition === 'less' || byСondition === 'more')) {
-            dispatch(changeNameColumn('name'));
             alert("Фильтр 'Больше' или 'Меньше' не может быть с фильтром 'Название'");
+        } else if (e.target.value !== 'name' && isNaN(+input) ) {
+            dispatch(changeInput(''));
+            alert("Значение поля должно быть цифрой");
         } else {
             dispatch(changeNameColumn(e.target.value));
         }
@@ -24,10 +25,8 @@ const Filters = () => {
 
     const onChangeCondition = (e) => {
         if (byNameСolumn !== 'name' && e.target.value === 'contain') {
-            dispatch(changeCondition('equally'));
             alert("Фильтр 'Содержит' может быть только с фильтром 'Название'");
         } else if (byNameСolumn === 'name' && (e.target.value === 'less' || e.target.value === 'more')) {
-            dispatch(changeCondition('equally'));
             alert("Фильтр 'Больше' или 'Меньше' не может быть с фильтром 'Название'");
         } else {
             dispatch(changeCondition(e.target.value));
@@ -35,7 +34,7 @@ const Filters = () => {
     };
 
     const onChangeInput = (e) => {
-        if (byNameСolumn !== 'name' && isNaN(+e.target.value) ) {
+        if (byNameСolumn !== 'name' && isNaN(+e.target.value)) {
             dispatch(changeInput(''));
             alert("Значение должно быть цифрой");
         } else {
